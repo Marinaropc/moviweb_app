@@ -1,5 +1,5 @@
 from data_manager.data_manager_interface import DataManagerInterface
-from models import db, User, Movie
+from data_manager.models import db, User, Movie
 
 class SQLiteDataManager(DataManagerInterface):
     """Manages all database operations using SQLAlchemy."""

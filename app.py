@@ -1,10 +1,10 @@
 from flask import (Flask, jsonify, request, render_template,
                    redirect, url_for, flash)
 from data_manager.sqlite_data_manager import SQLiteDataManager
-from models import db
+from data_manager.models import db
 from sqlalchemy.exc import SQLAlchemyError
 from jinja2 import TemplateNotFound, TemplateSyntaxError
-import config
+from data_manager import config
 import requests
 
 app = Flask(__name__)
