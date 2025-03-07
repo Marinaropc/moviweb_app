@@ -8,29 +8,31 @@ class SQLiteDataManager(DataManagerInterface):
         """Retrieve all users from the database."""
         return User.query.all()
 
+
     def get_user_movies(self, user_id):
         """Retrieve all movies associated with a given user."""
         return Movie.query.filter_by(user_id=user_id).all()
-    @staticmethod
-    def get_movie(movie_id):
+
+
+    def get_movie(self, movie_id):
         movie = Movie.query.get(movie_id)
         return movie
 
-    @staticmethod
-    def get_user(user_id):
+
+    def get_user(self, user_id):
         user = User.query.get(user_id)
         return user
 
-    @staticmethod
-    def add_user(name):
+
+    def add_user(self, name):
         """Add a new user to the database."""
         user = User(name = name)
         db.session.add(user)
         db.session.commit()
         return user
 
-    @staticmethod
-    def add_movie(user_id, name, director, year, rating, poster):
+
+    def add_movie(self, user_id, name, director, year, rating, poster):
         """Add a new movie to the database."""
         movie = Movie(user_id=user_id, name=name, director=director,
                       year=year, rating=rating, poster=poster)
@@ -38,8 +40,8 @@ class SQLiteDataManager(DataManagerInterface):
         db.session.commit()
         return movie
 
-    @staticmethod
-    def update_movie( movie_id, name = None, director = None,
+
+    def update_movie(self, movie_id, name = None, director = None,
                      year = None, rating = None):
         """Update an existing movie's details."""
         movie = Movie.query.get(movie_id)
@@ -56,19 +58,8 @@ class SQLiteDataManager(DataManagerInterface):
             return movie
         return None
 
-    @staticmethod
-    def delete_user(user_id):
-        """Delete a user from the database."""
-        user = User.query.get(user_id)
-        if user:
-            db.session.delete(user)
-            db.session.commit()
-            return True
-        user_not_found = False
-        return user_not_found
 
-    @staticmethod
-    def delete_movie(movie_id):
+    def delete_movie(self, movie_id):
         """Delete a movie from the database."""
         movie = Movie.query.get(movie_id)
         if movie:
