@@ -30,10 +30,10 @@ class SQLiteDataManager(DataManagerInterface):
         return user
 
     @staticmethod
-    def add_movie(user_id, name, director, year, rating):
+    def add_movie(user_id, name, director, year, rating, poster):
         """Add a new movie to the database."""
         movie = Movie(user_id=user_id, name=name, director=director,
-                      year=year, rating=rating)
+                      year=year, rating=rating, poster=poster)
         db.session.add(movie)
         db.session.commit()
         return movie

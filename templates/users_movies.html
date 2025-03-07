@@ -4,22 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User's Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Movies for {{ user.name }}</h1>
-    <ul>
-        {% for movie in movies %}
-            <li>
-                {{ movie.name }} ({{ movie.year }}) - {{ movie.director }} | Rating: {{ movie.rating }}
-                <a href="{{ url_for('update_movie', user_id=user.id, movie_id=movie.id) }}">Edit</a>
-                <form action="{{ url_for('delete_movie', user_id=user.id, movie_id=movie.id) }}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('add_movie', user_id=user.id) }}">Add a New Movie</a>
-    <br>
-    <a href="{{ url_for('list_users') }}">Back to Users</a>
+    <div class="container">
+        <h1 class="page-title">Movies for {{ user.name }}</h1>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <ul class="movie-list">
+            {% for movie in movies %}
+                <li class="movie-item">
+                    <div class="movie-poster">
+                        <img src="{{ movie.poster }}" alt="Poster for {{ movie.name }}" class="movie-image">
+                    </div>
+                    <div class="movie-details">
+                        <span class="movie-name">{{ movie.name }} ({{ movie.year }})</span>
+                        - <span class="movie-director">{{ movie.director }}</span>
+                        | Rating: <span class="movie-rating">{{ movie.rating }}</span>
+                    </div>
+                    <div class="movie-actions">
+                        <a href="{{ url_for('update_movie', user_id=user.id, movie_id=movie.id) }}" class="button edit-button">Edit</a>
+                        <form action="{{ url_for('delete_movie', user_id=user.id, movie_id=movie.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="button delete-button">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="buttons-container">
+            <a href="{{ url_for('add_movie', user_id=user.id) }}" class="button add-movie-button">Add a New Movie</a>
+            <br>
+            <a href="{{ url_for('list_users') }}" class="button back-button">Back to Users</a>
+        </div>
+    </div>
 </body>
 </html>

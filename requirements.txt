@@ -1,3 +1,6 @@
 flask
 flask_sqlalchemy
 requests
+dotenv
+sqlalchemy
+jinja2

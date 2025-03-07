@@ -1,0 +1,136 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Layout */
+.container {
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Typography */
+h1 {
+    color: #007bff;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.page-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Forms */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+input, .form-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn, .form-button, .back-button, .edit-button, .delete-button, .add-movie-button {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.form-button { background-color: #4CAF50; }
+.form-button:hover { background-color: #45a049; }
+
+.back-button { background-color: #f44336; }
+.back-button:hover { background-color: #e53935; }
+
+.edit-button { background-color: #FF9800; }
+.delete-button { background-color: #f44336; }
+.add-movie-button { background-color: #4CAF50; margin-bottom: 10px; }
+
+/* Lists */
+ul { list-style: none; padding: 0; }
+.list-group-item, .movie-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover, .movie-item:hover { background-color: #e9ecef; }
+
+/* Flash Messages */
+.flash-messages {
+    margin-bottom: 20px;
+}
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+.flash-message.success { background-color: #4CAF50; }
+.flash-message.error { background-color: #f44336; }
+
+/* Cards */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    padding: 15px;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* Movie Posters */
+.movie-poster {
+    width: 120px;
+    height: auto;
+    margin-right: 15px;
+}
+.movie-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}

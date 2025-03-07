@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Movie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Update Movie</h1>
+    <div class="container">
+        <h1>Update Movie</h1>
         <form method="POST">
             <label for="name">Title:</label>
-            <input type="text" name="name" value="{{ movie.name }}" required>
+            <input type="text" id="name" name="name" value="{{ movie.name }}" required>
 
             <label for="director">Director:</label>
-            <input type="text" name="director" value="{{ movie.director }}">
+            <input type="text" id="director" name="director" value="{{ movie.director }}">
 
             <label for="year">Year:</label>
-            <input type="text" name="year" value="{{ movie.year }}">
+            <input type="number" id="year" name="year" value="{{ movie.year }}" min="1880" max="2100">
 
             <label for="rating">IMDb Rating:</label>
-            <input type="text" name="rating" value="{{ movie.rating }}">
+            <input type="number" id="rating" name="rating" value="{{ movie.rating }}" step="0.1" min="0" max="10">
 
-            <button type="submit">Update Movie</button>
+            <button type="submit" class="btn">Update Movie</button>
         </form>
-    <a href="{{ url_for('user_movies', user_id=user_id) }}">Back to Movies</a>
+        <a class="back-link" href="{{ url_for('user_movies', user_id=user_id) }}">Back to Movies</a>
+    </div>
 </body>
 </html>
